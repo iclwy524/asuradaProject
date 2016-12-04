@@ -123,7 +123,7 @@ rate:9600 8N1
 save as console
 # > minicom -o console
 ================================================================================================
-for sienta to use elm327 , run the following at command before query obd command
+for sienta(protocol toyota k-line) to use elm327 , run the following at command before query obd command
 
 atib96 \n atiia13 \n atsh8113f1 \n atspa4 \n atsw00
 
