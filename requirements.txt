@@ -1,8 +1,10 @@
 Julius speech from github
+--------
 https://github.com/julius-speech/julius
 
 ===================================================================================================================
 pyJulius
+--------
 https://pythonhosted.org/pyjulius/#
 
 .. pyjulius documentation master file, created by
@@ -93,29 +95,44 @@ Exceptions
     
 ======================================================================================================================================    
 for obd
+--------
 guide for obd-pi
 http://www.instructables.com/id/OBD-Pi/step4/Software-Installation/
 #  sudo apt-get install python-serial
 #  sudo apt-get install bluetooth bluez-utils blueman
 #  sudo apt-get install python-wxgtk2.8 python-wxtools wx2.8-i18n libwxgtk2.8-dev
 #  git clone https://github.com/Pbartek/pyobd-pi.git
+================================================================================================
+
+
 ================================================================
 pyOBD
+--------
 http://python-obd.readthedocs.io/en/latest/
+================================================================================================
+
 ================================================================
 to connect bluetooth elm327 to pi
+--------
 
 # > bluetoothctl -a
 #bluetooth> trust AA:BB:CC:11:22:33
 #bluetooth> connect AA:BB:CC:11:22:33
 #bluetooth> quit
 ================================================================
+
+
+================================================================================================
 connect bluetooth to serial
+--------
 
 # > sudo rfcomm release all
 # > sudo rfcomm bind 0 AA:BB:CC:11:22:33
+================================================================================================
+
 ================================================================
 use minicom to test connection
+--------
 
 # > minicom -o -s 
 port: /dev/tty/rfcomm0
@@ -123,10 +140,70 @@ rate:9600 8N1
 save as console
 # > minicom -o console
 ================================================================================================
+
+================================================================================================
 for sienta(protocol toyota k-line) to use elm327 , run the following at command before query obd command
+--------
 
 atib96 \n atiia13 \n atsh8113f1 \n atspa4 \n atsw00
 
 ref:http://blog.hycko.net/4572.php
 ================================================================================================
 
+
+================================================================================================
+pulseAudio to monitor soundoutput
+--------
+to run pulseAudio
+1.#> pulseAudio -D
+================================================================================================
+
+================================================================================================
+to get sound on RPI
+--------
+
+1. sudo apt-get install alsa-utils
+2. sudo modprobe snd_bcm2835
+3.sudo apt-get install alsa-utils is permanent, but sudo modprobe snd_bcm2835 only initialises the driver for the current session. To ensure the module is initialised on boot, add snd_bcm2835 to /etc/modules
+================================================================================================
+
+
+================================================================================================
+to get rpi to talk, use google_speech or flite
+--------
+
+FOR GOOGLE SPEECH
+(https://pypi.python.org/pypi/google_speech/)
+
+Installation
+
+Google Speech requires Python >= 3.3.
+
+From PyPI (with PIP)
+If you don’t already have it, install pip for Python 3 (not needed if you are using Python >= 3.4)
+Install Google Speech: pip3 install google_speech
+Install SoX, with MP3 support. On Ubuntu and other Debian derivatives: sudo apt-get install sox libsox-fmt-mp3. Windows users can download binaries on the SoX website, once installed you also need to copy libmad DLL in the directory where you have installed SoX, and to add this directory to your PATH environment variable.
+
+Examples
+Plane stall alarm:
+
+google_speech -l en stall -e delay 0.5 overdrive 20 repeat 5 speed 0.9 gain -5
+
+Female robot voice (idea from here):
+
+google_speech -l en "Hello, I am a stupid robot voice" -e speed 0.9 overdrive 10 echo 0.8 0.7 6 0.7 echo 0.8 0.7 10 0.7 echo 0.8 0.7 12 0.7 echo 0.8 0.88 12 0.7 echo 0.8 0.88 30 0.7 echo 0.6 0.6 60 0.7
+
+
+FOR FLITE
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/programs
+
+sudo apt-get install flite
+
+flite -t "All good men come to the aid of the rebellion"
+
+flite -f jefferson-inaugural.txt
+
+To use in python
+import os
+os.system("flite -t 'hellow i am flite'")
+================================================================================================
