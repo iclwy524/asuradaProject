@@ -207,3 +207,31 @@ To use in python
 import os
 os.system("flite -t 'hellow i am flite'")
 ================================================================================================
+For TTS use CMUSphinx
+--------
+
+http://cmusphinx.sourceforge.net/wiki/tutorialpocketsphinx
+
+
+goto http://cmusphinx.sourceforge.net/wiki/download
+download sphinxbase, pocketsphinx, ./configure, make, make install
+
+To test installation, run 'pocketsphinx_continuous -inmic yes' and check that it recognizes words you are saying to the microphone.
+=====================================================================================
+To install python speech_recognition package
+--------
+
+ref:https://pypi.python.org/pypi/SpeechRecognition/
+
+#sudo pip install speech_recognition
+
+=====================================================================================
+Install pyaudio for speech_recognition to run
+--------
+
+#xcode-select --install
+#brew remove portaudio
+#brew install portaudio
+#pip3 install pyaudio
+
+to test speech_recognition, python -m speech_recognition
