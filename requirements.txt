@@ -31,7 +31,7 @@ Let's just write a simple program that will print whatever the julius server sen
     import sys
     import pyjulius
     import Queue
-    
+
     # Initialize and try to connect
     client = pyjulius.Client('localhost', 10500)
     try:
@@ -39,7 +39,7 @@ Let's just write a simple program that will print whatever the julius server sen
     except pyjulius.ConnectionError:
         print 'Start julius as module first!'
         sys.exit(1)
-    
+
     # Start listening to the server
     client.start()
     try:
@@ -92,8 +92,8 @@ Exceptions
 ----------
 .. automodule:: pyjulius.exceptions
     :members:
-    
-======================================================================================================================================    
+
+======================================================================================================================================
 for obd
 --------
 guide for obd-pi
@@ -134,7 +134,7 @@ connect bluetooth to serial
 use minicom to test connection
 --------
 
-# > minicom -o -s 
+# > minicom -o -s
 port: /dev/tty/rfcomm0
 rate:9600 8N1
 save as console
@@ -180,7 +180,7 @@ Installation
 Google Speech requires Python >= 3.3.
 
 From PyPI (with PIP)
-If you don’t already have it, install pip for Python 3 (not needed if you are using Python >= 3.4)
+If you donï¿½t already have it, install pip for Python 3 (not needed if you are using Python >= 3.4)
 Install Google Speech: pip3 install google_speech
 Install SoX, with MP3 support. On Ubuntu and other Debian derivatives: sudo apt-get install sox libsox-fmt-mp3. Windows users can download binaries on the SoX website, once installed you also need to copy libmad DLL in the directory where you have installed SoX, and to add this directory to your PATH environment variable.
 
@@ -216,16 +216,24 @@ http://cmusphinx.sourceforge.net/wiki/tutorialpocketsphinx
 goto http://cmusphinx.sourceforge.net/wiki/download
 download sphinxbase, pocketsphinx, ./configure, make, make install
 
+sudo pip install pocketsphinx
+
 To test installation, run 'pocketsphinx_continuous -inmic yes' and check that it recognizes words you are saying to the microphone.
+
+
 =====================================================================================
+
+
+
 To install python speech_recognition package
 --------
 
 ref:https://pypi.python.org/pypi/SpeechRecognition/
 
 #sudo pip install speech_recognition
-
 =====================================================================================
+
+
 Install pyaudio for speech_recognition to run
 --------
 
