@@ -1,10 +1,11 @@
 from sensor.ear import ear
 from actor.mouth import mouth
+from sensor.pyobd.obd_io import obd_io
+from sensor.pyobd.obd_sensors import obd_sensors
+
 
 class voiceCommand:
     def __init__(self):
-        commandList={'computer':computer,'hello': hello}
-        self.commandList=commandList
 
     def computer(self):
         print "receive command computer"
@@ -19,3 +20,8 @@ class voiceCommand:
         except:
             print "no command found"
             talk.speaking("no command found")
+
+			commandList={'computer': computer,'hello': hello}
+
+if __name__=="__main__":
+    hello()

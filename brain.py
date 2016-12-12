@@ -1,12 +1,13 @@
 from sensor.ear import ear
 from actor.mouth import mouth
 from voiceCommand import voiceCommand
+from sensor.pyobd.obd_io import OBDPort
 
 talk=mouth()
 voiceMsg=ear("testig pheonix")
 vc=voiceCommand()
-
-
+obd=OBDPort()
+print obd.get_dtc()
 
 while True:
     talk.speaking("What can I do for you , Sir?")

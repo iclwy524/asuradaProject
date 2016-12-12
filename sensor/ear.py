@@ -26,9 +26,8 @@ class ear:
             print("Can't understand what you said")
         except sr.RequestError as e:
             print ("Sphinx error; {0}".format(e))
-    
 
-# recognize speech using Sphinx
+
 if __name__=="__main__":
     earMsg=ear("phinx")
     earMsg.listening()
