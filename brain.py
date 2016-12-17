@@ -5,7 +5,7 @@ from sensor.pyobd.obd_capture import OBD_Capture
 import pdb
 from threading import Thread
 import time
-from sensor.pyobd.OBDController import OBDController
+from sensor.pyobd.obd_controller import OBDController
 #add from windows2
 talk=mouth()
 voiceMsg=ear("testig pheonix")
