@@ -94,7 +94,7 @@ class OBDController():
         return gear
     def send_command(self,cmd):
         return(self.port.send_command(cmd))
-    def get_result(self)
+    def get_result(self):
         return (self.port.get_result())
     def get_sensor_value(self,sensor):
         return (self.port.get_sensor_value(sensor))
