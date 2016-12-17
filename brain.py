@@ -5,7 +5,7 @@ from sensor.pyobd.obd_io import OBDPort
 
 talk=mouth()
 voiceMsg=ear("testig pheonix")
-vc=voiceCommand()
+#vc=voiceCommand()
 obd=OBDPort()
 print obd.get_dtc()
 
