@@ -2,7 +2,7 @@ from sensor.ear import ear
 from actor.mouth import mouth
 from voiceCommand import voiceCommand
 from sensor.pyobd.obd_io import OBDPort
-#add from rpi
+#add from rpi adn 2
 talk=mouth()
 voiceMsg=ear("testig pheonix")
 #vc=voiceCommand()
