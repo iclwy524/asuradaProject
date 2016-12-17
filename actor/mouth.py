@@ -7,7 +7,7 @@ import os
 
 class mouth:
     def __init__(self):
-        self.speech_engine=pyttsx.init('nsss')
+        self.speech_engine=pyttsx.init('espeak')
         self.speech_engine.setProperty('rate',150)
 
 
