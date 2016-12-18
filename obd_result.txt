@@ -1,0 +1,421 @@
+['/dev/rfcomm0']
+Opening interface (serial port)
+Interface successfully /dev/rfcomm0 opened
+Connecting to ECU...
+Got nothing
+
+response:?
+atz response:ELM327 v1.5
+ate0 response:OK
+Got nothing
+
+0100 response:41 00 BE 1F B8 10 
+Connected to /dev/rfcomm0
+inside self.c.get_output
+before sensor0
+10111110000111111011100000010000
+1
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+S-S DTC Cleared:#
+3
+before sensor3
+02
+Fuel System Stat:02
+4
+before sensor4
+hex_to_int: 2B
+hex_to_int: 43
+16.862745098
+Calc Load Value:16.862745098
+5
+before sensor5
+hex_to_int: 82
+hex_to_int: 130
+194
+Coolant Temp:194
+6
+before sensor6
+hex_to_int: 86
+hex_to_int: 134
+4
+S-T Fuel Trim:4
+7
+before sensor7
+hex_to_int: 7E
+hex_to_int: 126
+-2
+L-T Fuel Trim:-2
+12
+before sensor12
+hex_to_int: 09D0
+hex_to_int: 2512
+628
+Engine RPM:628
+13
+before sensor13
+hex_to_int: 00
+hex_to_int: 0
+0.0
+Vehicle Speed:0.0
+14
+before sensor14
+hex_to_int: 8D
+hex_to_int: 141
+6.5
+Timing Advance:6.5
+15
+before sensor15
+hex_to_int: 56
+hex_to_int: 86
+114
+Intake Air Temp:114
+16
+before sensor16
+hex_to_int: 0097
+hex_to_int: 151
+0.19973676
+AirFlow Rate(MAF):0.19973676
+17
+before sensor17
+hex_to_int: 2B
+hex_to_int: 43
+16.862745098
+Throttle Position:16.862745098
+19
+before sensor19
+03
+Loc of O2 sensors:03
+20
+before sensor20
+hex_to_int: 0B84
+hex_to_int: 2948
+2203
+O2 Sensor: 1 - 1:2203
+21
+before sensor21
+hex_to_int: 8CFF
+hex_to_int: 36095
+28099
+O2 Sensor: 1 - 2:28099
+28
+before sensor28
+05
+OBD Designation:05
+16:18:31.677789
+S-S DTC Cleared = # 
+Fuel System Stat = 02 
+Calc Load Value = 16.862745098 
+Coolant Temp = 194 F
+S-T Fuel Trim = 4 %
+L-T Fuel Trim = -2 %
+Engine RPM = 628 
+Vehicle Speed = 0.0 MPH
+Timing Advance = 6.5 degrees
+Intake Air Temp = 114 F
+AirFlow Rate(MAF) = 0.19973676 lb/min
+Throttle Position = 16.862745098 %
+Loc of O2 sensors = 03 
+O2 Sensor: 1 - 1 = 2203 %
+O2 Sensor: 1 - 2 = 28099 %
+OBD Designation = 05 
+
+16:18:31.677789
+S-S DTC Cleared = # 
+Fuel System Stat = 02 
+Calc Load Value = 16.862745098 
+Coolant Temp = 194 F
+S-T Fuel Trim = 4 %
+L-T Fuel Trim = -2 %
+Engine RPM = 628 
+Vehicle Speed = 0.0 MPH
+Timing Advance = 6.5 degrees
+Intake Air Temp = 114 F
+AirFlow Rate(MAF) = 0.19973676 lb/min
+Throttle Position = 16.862745098 %
+Loc of O2 sensors = 03 
+O2 Sensor: 1 - 1 = 2203 %
+O2 Sensor: 1 - 2 = 28099 %
+OBD Designation = 05 
+
+self.c.get_output()
+inside self.c.get_output
+before sensor0
+10111110000111111011100000010000
+1
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+S-S DTC Cleared:#
+3
+before sensor3
+02
+Fuel System Stat:02
+4
+before sensor4
+hex_to_int: 2A
+hex_to_int: 42
+16.4705882353
+Calc Load Value:16.4705882353
+5
+before sensor5
+hex_to_int: 82
+hex_to_int: 130
+194
+Coolant Temp:194
+6
+before sensor6
+hex_to_int: 81
+hex_to_int: 129
+0
+S-T Fuel Trim:0
+7
+before sensor7
+hex_to_int: 7E
+hex_to_int: 126
+-2
+L-T Fuel Trim:-2
+12
+before sensor12
+hex_to_int: 0979
+hex_to_int: 2425
+606
+Engine RPM:606
+13
+before sensor13
+hex_to_int: 00
+hex_to_int: 0
+0.0
+Vehicle Speed:0.0
+14
+before sensor14
+hex_to_int: 8E
+hex_to_int: 142
+7.0
+Timing Advance:7.0
+15
+before sensor15
+hex_to_int: 56
+hex_to_int: 86
+114
+Intake Air Temp:114
+16
+before sensor16
+hex_to_int: 0097
+hex_to_int: 151
+0.19973676
+AirFlow Rate(MAF):0.19973676
+17
+before sensor17
+hex_to_int: 2B
+hex_to_int: 43
+16.862745098
+Throttle Position:16.862745098
+19
+before sensor19
+03
+Loc of O2 sensors:03
+20
+before sensor20
+hex_to_int: 0784
+hex_to_int: 1924
+1403
+O2 Sensor: 1 - 1:1403
+21
+before sensor21
+hex_to_int: 8CFF
+hex_to_int: 36095
+28099
+O2 Sensor: 1 - 2:28099
+28
+before sensor28
+05
+OBD Designation:05
+16:18:39.324555
+S-S DTC Cleared = # 
+Fuel System Stat = 02 
+Calc Load Value = 16.4705882353 
+Coolant Temp = 194 F
+S-T Fuel Trim = 0 %
+L-T Fuel Trim = -2 %
+Engine RPM = 606 
+Vehicle Speed = 0.0 MPH
+Timing Advance = 7.0 degrees
+Intake Air Temp = 114 F
+AirFlow Rate(MAF) = 0.19973676 lb/min
+Throttle Position = 16.862745098 %
+Loc of O2 sensors = 03 
+O2 Sensor: 1 - 1 = 1403 %
+O2 Sensor: 1 - 2 = 28099 %
+OBD Designation = 05 
+
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+before sensor3
+02
+before sensor4
+hex_to_int: 2C
+hex_to_int: 44
+17.2549019608
+before sensor5
+hex_to_int: 82
+hex_to_int: 130
+194
+before sensor6
+hex_to_int: 86
+hex_to_int: 134
+4
+before sensor7
+hex_to_int: 7E
+hex_to_int: 126
+-2
+before sensor12
+hex_to_int: 0985
+hex_to_int: 2437
+609
+before sensor13
+hex_to_int: 00
+hex_to_int: 0
+0.0
+before sensor14
+hex_to_int: 8A
+hex_to_int: 138
+5.0
+before sensor15
+hex_to_int: 56
+hex_to_int: 86
+114
+before sensor16
+hex_to_int: 0096
+hex_to_int: 150
+0.198414
+before sensor17
+hex_to_int: 2B
+hex_to_int: 43
+16.862745098
+before sensor19
+03
+before sensor20
+hex_to_int: 0F87
+hex_to_int: 3975
+3005
+before sensor21
+hex_to_int: 8CFF
+hex_to_int: 36095
+28099
+before sensor28
+05
+before sensor1
+hex_to_int: 00
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+hex_to_int: 
+on exception getting: 
+hex_to_int: 0
+#
+before sensor3
+02
+before sensor4
+hex_to_int: 2B
+hex_to_int: 43
+16.862745098
+before sensor5
+hex_to_int: 82
+hex_to_int: 130
+194
+before sensor6
+hex_to_int: 88
+hex_to_int: 136
+6
+before sensor7
+hex_to_int: 7E
+hex_to_int: 126
+-2
+before sensor12
+hex_to_int: 0950
+hex_to_int: 2384
+596
+before sensor12
+hex_to_int: 0992
+hex_to_int: 2450
+612
+before sensor12
+hex_to_int: 099B
+hex_to_int: 2459
+614
