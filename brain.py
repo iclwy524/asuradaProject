@@ -36,11 +36,13 @@ def counting():
         num=num+1
 
 
-t=Thread(target=counting)
-t.start()
+#t=Thread(target=counting)
+#t.start()
 
 obd=OBDController()
-obd.send_command("atz")
-print obd.get_result
+obd.connect()
+if obd.isconnected:
+    obd.send_command("atz")
+    print obd.get_result
 
 #vcTemp()
