@@ -41,8 +41,18 @@ def counting():
 
 obd=OBDController()
 obd.connect()
-if obd.isconnected:
-    obd.send_command("atz")
-    print obd.get_result
 
+
+if not obd.is_connected():
+	print "not connected"
+	print obd.is_connected()
+	print "not connected"
+
+
+while 1:
+	cmd=raw_input("in put to send: ")
+	print "getting information of command: "+cmd
+	obd.send_command(cmd)
+	print "got the following result:"
+	print obd.get_result() 
 #vcTemp()
