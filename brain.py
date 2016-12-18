@@ -43,16 +43,20 @@ obd=OBDController()
 obd.connect()
 
 
-if not obd.is_connected():
+if obd.is_connected():
+    print "got following DTC: "
+    print obd.get_dtc()
+else:
 	print "not connected"
 	print obd.is_connected()
-	print "not connected"
+
 
 
 while 1:
-	cmd=raw_input("in put to send: ")
+	cmd=raw_input("input command to send: ")
 	print "getting information of command: "+cmd
 	obd.send_command(cmd)
+    time.sleep(0.5)
 	print "got the following result:"
-	print obd.get_result() 
+	print obd.get_result()
 #vcTemp()
