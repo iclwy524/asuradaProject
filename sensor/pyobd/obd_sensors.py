@@ -1,4 +1,21 @@
-#!/usr/bin/env python
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @iclwy524
+ Watch 38
+  Star 190
+  Fork 257 peterh/pyobd
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
+Branch: master Find file Copy pathpyobd/obd_sensors.py
+0a0466e  on Apr 7, 2015
+@JoakimSoderberg JoakimSoderberg Don't use eval for converting strings
+2 contributors @JoakimSoderberg @peterh
+RawBlameHistory
+163 lines (131 sloc)  5.64 KB
+ #!/usr/bin/env python
 ###########################################################################
 # obd_sensors.py
 #
@@ -23,13 +40,8 @@
 ###########################################################################
 
 def hex_to_int(str):
-	try:
-    		i = eval("0x" + str, {}, {})
-	except:
-		i=0
-		print "value of str: "+str
-		print "exception"
-    	return i
+    i = eval("0x" + str, {}, {})
+    return i
 
 def maf(code):
     code = hex_to_int(code)
@@ -65,8 +77,7 @@ def sec_to_min(code):
 
 def temp(code):
     code = hex_to_int(code)
-    c = code - 40
-    return 32 + (9 * c / 5)
+    return code - 40
 
 def cpass(code):
     #fixme
@@ -74,8 +85,7 @@ def cpass(code):
 
 def fuel_trim_percent(code):
     code = hex_to_int(code)
-    #return (code - 128.0) * 100.0 / 128
-    return (code - 128) * 100 / 128
+    return (code - 128.0) * 100.0 / 128
 
 def dtc_decrypt(code):
     #first byte is byte after PID and without spaces
@@ -106,75 +116,56 @@ def dtc_decrypt(code):
 
     res.append(((numD>>7)&0x01)) #EGR SystemC7  bit of different
 
-    #return res
-    return "#"
+    return res
+
+def bin(s):
+    return str(s) if s<=1 else bin(s>>1) + str(s&1)
 
 def hex_to_bitstring(str):
-    bitstring = ""
-    for i in str:
-        # silly type safety, we don't want to eval random stuff
-        if type(i) == type(''):
-            v = eval("0x%s" % i)
-            if v & 8 :
-                bitstring += '1'
-            else:
-                bitstring += '0'
-            if v & 4:
-                bitstring += '1'
-            else:
-                bitstring += '0'
-            if v & 2:
-                bitstring += '1'
-            else:
-                bitstring += '0'
-            if v & 1:
-                bitstring += '1'
-            else:
-                bitstring += '0'
-    return bitstring
+    return bin(int(str, 16))
 
 class Sensor:
-    def __init__(self, shortName, sensorName, sensorcommand, sensorValueFunction, u):
-        self.shortname = shortName
+    def __init__(self,sensorName, sensorcommand, sensorValueFunction, u):
         self.name = sensorName
         self.cmd  = sensorcommand
         self.value= sensorValueFunction
         self.unit = u
 
 SENSORS = [
-    Sensor("pids"                  , "Supported PIDs"				, "0100" , hex_to_bitstring ,""       ),
-    Sensor("dtc_status"            , "S-S DTC Cleared"				, "0101" , dtc_decrypt      ,""       ),
-    Sensor("dtc_ff"                , "DTC C-F-F"					, "0102" , cpass            ,""       ),
-    Sensor("fuel_status"           , "Fuel System Stat"				, "0103" , cpass            ,""       ),
-    Sensor("load"                  , "Calc Load Value"				, "01041", percent_scale    ,""       ),
-    Sensor("temp"                  , "Coolant Temp"					, "0105" , temp             ,"F"      ),
-    Sensor("short_term_fuel_trim_1", "S-T Fuel Trim"				, "0106" , fuel_trim_percent,"%"      ),
-    Sensor("long_term_fuel_trim_1" , "L-T Fuel Trim"				, "0107" , fuel_trim_percent,"%"      ),
-    Sensor("short_term_fuel_trim_2", "S-T Fuel Trim"				, "0108" , fuel_trim_percent,"%"      ),
-    Sensor("long_term_fuel_trim_2" , "L-T Fuel Trim"				, "0109" , fuel_trim_percent,"%"      ),
-    Sensor("fuel_pressure"         , "FuelRail Pressure"			, "010A" , cpass            ,""       ),
-    Sensor("manifold_pressure"     , "Intk Manifold"				, "010B" , intake_m_pres    ,"psi"    ),
-    Sensor("rpm"                   , "Engine RPM"					, "010C1", rpm              ,""       ),
-    Sensor("speed"                 , "Vehicle Speed"				, "010D1", speed            ,"MPH"    ),
-    Sensor("timing_advance"        , "Timing Advance"				, "010E" , timing_advance   ,"degrees"),
-    Sensor("intake_air_temp"       , "Intake Air Temp"				, "010F" , temp             ,"F"      ),
-    Sensor("maf"                   , "AirFlow Rate(MAF)"			, "0110" , maf              ,"lb/min" ),
-    Sensor("throttle_pos"          , "Throttle Position"			, "01111", throttle_pos     ,"%"      ),
-    Sensor("secondary_air_status"  , "2nd Air Status"				, "0112" , cpass            ,""       ),
-    Sensor("o2_sensor_positions"   , "Loc of O2 sensors"			, "0113" , cpass            ,""       ),
-    Sensor("o211"                  , "O2 Sensor: 1 - 1"				, "0114" , fuel_trim_percent,"%"      ),
-    Sensor("o212"                  , "O2 Sensor: 1 - 2"				, "0115" , fuel_trim_percent,"%"      ),
-    Sensor("o213"                  , "O2 Sensor: 1 - 3"				, "0116" , fuel_trim_percent,"%"      ),
-    Sensor("o214"                  , "O2 Sensor: 1 - 4"				, "0117" , fuel_trim_percent,"%"      ),
-    Sensor("o221"                  , "O2 Sensor: 2 - 1"				, "0118" , fuel_trim_percent,"%"      ),
-    Sensor("o222"                  , "O2 Sensor: 2 - 2"				, "0119" , fuel_trim_percent,"%"      ),
-    Sensor("o223"                  , "O2 Sensor: 2 - 3"				, "011A" , fuel_trim_percent,"%"      ),
-    Sensor("o224"                  , "O2 Sensor: 2 - 4"				, "011B" , fuel_trim_percent,"%"      ),
-    Sensor("obd_standard"          , "OBD Designation"				, "011C" , cpass            ,""       ),
-    Sensor("o2_sensor_position_b"  , "Loc of O2 sensor" 			, "011D" , cpass            ,""       ),
-    Sensor("aux_input"             , "Aux input status"				, "011E" , cpass            ,""       ),
-    Sensor("engine_time"           , "Engine Start MIN"				, "011F" , sec_to_min       ,"min"    ),
-    Sensor("engine_mil_time"       , "Engine Run MIL"				, "014D" , sec_to_min       ,"min"    ),
+    Sensor("          Supported PIDs", "0100", hex_to_bitstring  ,""       ),
+    Sensor("Status Since DTC Cleared", "0101", dtc_decrypt       ,""       ),
+    Sensor("DTC Causing Freeze Frame", "0102", cpass             ,""       ),
+    Sensor("      Fuel System Status", "0103", cpass             ,""       ),
+    Sensor("   Calculated Load Value", "0104", percent_scale     ,""       ),
+    Sensor("     Coolant Temperature", "0105", temp              ,"C"      ),
+    Sensor("    Short Term Fuel Trim", "0106", fuel_trim_percent ,"%"      ),
+    Sensor("     Long Term Fuel Trim", "0107", fuel_trim_percent ,"%"      ),
+    Sensor("    Short Term Fuel Trim", "0108", fuel_trim_percent ,"%"      ),
+    Sensor("     Long Term Fuel Trim", "0109", fuel_trim_percent ,"%"      ),
+    Sensor("      Fuel Rail Pressure", "010A", cpass             ,""       ),
+    Sensor("Intake Manifold Pressure", "010B", intake_m_pres     ,"psi"    ),
+    Sensor("              Engine RPM", "010C", rpm               ,""       ),
+    Sensor("           Vehicle Speed", "010D", speed             ,"MPH"    ),
+    Sensor("          Timing Advance", "010E", timing_advance    ,"degrees"),
+    Sensor("         Intake Air Temp", "010F", temp              ,"C"      ),
+    Sensor("     Air Flow Rate (MAF)", "0110", maf               ,"lb/min" ),
+    Sensor("       Throttle Position", "0111", throttle_pos      ,"%"      ),
+    Sensor("    Secondary Air Status", "0112", cpass             ,""       ),
+    Sensor("  Location of O2 sensors", "0113", cpass             ,""       ),
+    Sensor("        O2 Sensor: 1 - 1", "0114", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 1 - 2", "0115", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 1 - 3", "0116", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 1 - 4", "0117", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 2 - 1", "0118", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 2 - 2", "0119", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 2 - 3", "011A", fuel_trim_percent ,"%"      ),
+    Sensor("        O2 Sensor: 2 - 4", "011B", fuel_trim_percent ,"%"      ),
+    Sensor("         OBD Designation", "011C", cpass             ,""       ),
+    Sensor("  Location of O2 sensors", "011D", cpass             ,""       ),
+    Sensor("        Aux input status", "011E", cpass             ,""       ),
+    Sensor(" Time Since Engine Start", "011F", sec_to_min        ,"min"    ),
+    Sensor("  Engine Run with MIL on", "014E", sec_to_min        ,"min"    ),
+
     ]
 
 

@@ -101,7 +101,7 @@ print "created instance"
 obd.connect()
 
 while 1:
-	print "got"
+	print "waiting..."
 	print obd.is_connected()
 	time.sleep(1)
 	if obd.is_connected():
@@ -112,6 +112,9 @@ while 1:
 	print IOClass.sensor(12)
 	print "sensor 13"
 	print IOClass.sensor(13)
+    print "sensor of total results from caputure"
+    print obd.allSensorData
+
 	try:
 		print "DTC"
 		print IOClass.get_dtc()
