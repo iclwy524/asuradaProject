@@ -108,19 +108,19 @@ while 1:
 		break
 IOClass=obd.get_port()
 while 1:
-	print "sensor 12"
-	print IOClass.sensor(12)
-	print "sensor 13"
-	print IOClass.sensor(13)
+    print "sensor 12"
+    print IOClass.sensor(12)
+    print "sensor 13"
+    print IOClass.sensor(13)
     print "sensor of total results from caputure"
     print obd.allSensorData
 
-	try:
-		print "DTC"
-		print IOClass.get_dtc()
-	except:
-		print "print DTC error"
-	time.sleep(0.5)
+    try:
+        print "DTC"
+        print IOClass.get_dtc()
+    except:
+        print "print DTC error"
+        time.sleep(0.5)
 
 
 if obd.is_connected():
