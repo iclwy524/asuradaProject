@@ -87,12 +87,12 @@ def counting():
 
 
 def typeInMode():
-	cmd=raw_input("input command to send: ")
-	print "getting information of command: "+cmd
-	obd.send_command(cmd)
+    cmd=raw_input("input command to send: ")
+    print "getting information of command: "+cmd
+    obd.send_command(cmd)
     time.sleep(0.5)
-	print "got the following result:"
-	print obd.get_result()
+    print "got the following result:"
+    print obd.get_result()
 
 
 
