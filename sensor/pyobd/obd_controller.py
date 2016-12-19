@@ -98,7 +98,13 @@ class OBDController():
         return (self.port.get_result())
     def get_sensor_value(self,sensor):
         return (self.port.get_sensor_value(sensor))
+    def get_dtc(self):
+        DTCCode=self.port.get_dtc()
+        DTCString=""
+        for code,description in DTCCode:
+            DTCString=DTCString+code+" : "+description+"\r"
 
+        return(DTCString)
 if __name__== "__main__":
     #username = getpass.getuser()
     #logitems = ["rpm", "speed", "throttle_pos", "load", "fuel_status"]

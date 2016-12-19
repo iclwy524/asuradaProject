@@ -23,10 +23,10 @@ class voiceCommand:
             talk.speaking("no command found")
 
     def checkCommand(self,commandToCheck):
-        commandList={'computer': computer,'hello': hello}
+
 
         return(commandList.has_key(commandToCheck))
 
-
+commandList={'computer': computer,'hello': hello}
 if __name__=="__main__":
     hello()
