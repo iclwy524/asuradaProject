@@ -1,20 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @iclwy524
- Watch 38
-  Star 190
-  Fork 257 peterh/pyobd
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathpyobd/obd_sensors.py
-0a0466e  on Apr 7, 2015
-@JoakimSoderberg JoakimSoderberg Don't use eval for converting strings
-2 contributors @JoakimSoderberg @peterh
-RawBlameHistory
-163 lines (131 sloc)  5.64 KB
+
  #!/usr/bin/env python
 ###########################################################################
 # obd_sensors.py
