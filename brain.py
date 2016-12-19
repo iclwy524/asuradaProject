@@ -85,7 +85,7 @@ def counting():
 
 
 
-
+"""
 def typeInMode():
     cmd=raw_input("input command to send: ")
     print "getting information of command: "+cmd
@@ -93,7 +93,7 @@ def typeInMode():
     time.sleep(0.5)
     print "got the following result:"
     print obd.get_result()
-
+"""
 
 
 obd=OBDConnection()
@@ -115,7 +115,7 @@ else:
 	print "not connected"
 	print obd.is_connected()
 
-while 1:
+#while 1:
     #typeInMode()
 
 
