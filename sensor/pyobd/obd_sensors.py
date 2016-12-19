@@ -23,8 +23,13 @@
 ###########################################################################
 
 def hex_to_int(str):
-    i = eval("0x" + str, {}, {})
-    return i
+	try:
+    		i = eval("0x" + str, {}, {})
+	except:
+		i=0
+		print "value of str: "+str
+		print "exception"
+    	return i
 
 def maf(code):
     code = hex_to_int(code)
