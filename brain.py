@@ -1,3 +1,4 @@
+import sys
 from sensor.ear import ear
 from actor.mouth import mouth
 from voiceCommand import voiceCommand
@@ -112,8 +113,10 @@ while 1:
     print IOClass.sensor(12)
     print "sensor 13"
     print IOClass.sensor(13)
+    print obd.get_output()
+    print obd.get_sensors()
     print "sensor of total results from caputure"
-    print obd.allSensorData
+   # print obd.allSensorData
 
     try:
         print "DTC"
