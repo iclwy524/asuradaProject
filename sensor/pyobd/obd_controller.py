@@ -10,6 +10,10 @@ import getpass
 
 
 from obd_utils import scanSerial
+OBD_RPM_INDEX=12
+OBD_SPEED_INDEX=13
+OBD_THROTTLEPOS_INDEX=17
+
 
 class OBDController():
     def __init__(self):
