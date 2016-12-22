@@ -111,6 +111,7 @@ def hex_to_bitstring(str):
 class Sensor:
     def __init__(self,sensorName, sensorcommand, sensorValueFunction, u):
         self.name = sensorName
+        self.shortname=sensorName
         self.cmd  = sensorcommand
         self.value= sensorValueFunction
         self.unit = u

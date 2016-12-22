@@ -50,6 +50,7 @@ class OBD_Capture():
             if self.supp[i] == "1":
                 # store index of sensor and sensor object
                 self.supportedSensorList.append([i+1, obd_sensors.SENSORS[i+1]])
+
             else:
                 self.unsupportedSensorList.append([i+1, obd_sensors.SENSORS[i+1]])
 
