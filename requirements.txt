@@ -1,5 +1,42 @@
 
 ======================================================================================================================================
+for usb sound card to work
+------
+
+disable analog audio device(usb will be the default)
+-------
+(just follow step 1. to disable analog audio is ok)
+
+If you don't need analog audio output, then a simple solution is to prevent that module from loading and then set your USB headset as the default audio device.
+(just follow step 1. to disable analog audio is ok)
+1. Disable analog audio.
+Open /boot/config.txt and comment out dtparam=audio=on.
+
+2. Set the USB audio device to the default device.
+Open /lib/modprobe.d/aliases.conf and comment out the line options snd-usb-audio index=-2
+
+3. Reboot
+
+
+to set usb as default (seems not work but i did this)
+--------------------
+Question is referring to another post which has already an answer that simply states that with Jessie there is no need to edit /usr/share/alsa/alsa.conf, just create ~/.asoundrc and type in
+
+pcm.!default {
+    type hw
+    card 1
+}
+
+ctl.!default {
+    type hw
+    card 1
+}
+PS: I just tested it with a clean installation on a raspberry 2 connected with Logitech Z-5 speakers, works perfectly
+
+
+======================================================================================================================================
+
+======================================================================================================================================
 for obd
 --------
 guide for obd-pi
