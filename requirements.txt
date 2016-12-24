@@ -5,7 +5,7 @@ for usb sound card to work
 
 disable analog audio device(usb will be the default)
 -------
-(just follow step 1. to disable analog audio is ok)
+(just follow step 1. to disable analog audio is ok), no need to the this if using a usb microphone
 
 If you don't need analog audio output, then a simple solution is to prevent that module from loading and then set your USB headset as the default audio device.
 (just follow step 1. to disable analog audio is ok)
@@ -35,7 +35,11 @@ PS: I just tested it with a clean installation on a raspberry 2 connected with L
 
 
 ======================================================================================================================================
+when no sound or mic or corresponding error
+-----------------------------
+Start pulseaudio
 
+>pulseaudio -D
 ======================================================================================================================================
 for obd
 --------
