@@ -14,11 +14,15 @@ OBD_RPM_INDEX=12
 OBD_SPEED_INDEX=13
 OBD_THROTTLEPOS_INDEX=17
 
-
+def monitor_data(o):
+	o.record_data()
+	
 class OBDController():
     def __init__(self):
         self.port = None
-
+	self.speed=0
+	self.rpm=0
+	self.throttle_pos=0
         #localtime = time.localtime(time.time())
         #filename = path+"car-"+str(localtime[0])+"-"+str(localtime[1])+"-"+str(localtime[2])+"-"+str(localtime[3])+"-"+str(localtime[4])+"-"+str(localtime[5])+".log"
         #self.log_file = open(filename, "w", 128)
@@ -44,6 +48,7 @@ class OBDController():
 
         if(self.port):
             print "Connected to "+self.port.port.name
+	    
 
     def is_connected(self):
         return self.port
@@ -65,15 +70,15 @@ class OBDController():
         while 1:
             results = {}
             (name, value, unit) = self.port.sensor(OBD_RPM_INDEX)
-            print name +":"+value+ " "+unit
+            print name +":"+str(value)+ " "+unit
             results["rpm"] = value;
 
             (name, value, unit) = self.port.sensor(OBD_SPEED_INDEX)
-            print name +":"+value+ " "+unit
+            print name +":"+str(value)+ " "+unit
             results["speed"] = value;
 
             (name, value, unit) = self.port.sensor(OBD_THROTTLEPOS_INDEX)
-            print name +":"+value+ " "+unit
+            print name +":"+str(value)+ " "+unit
             results["throttle_pos"] = value;
 
             self.speed=results["speed"]

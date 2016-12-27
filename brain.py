@@ -97,50 +97,7 @@ def typeInMode():
 """
 
 
-obd=OBDConnection()
-print "created instance"
+obd=OBDController()
 obd.connect()
 
-while 1:
-	print "waiting..."
-	print obd.is_connected()
-	time.sleep(1)
-	if obd.is_connected():
-		break
-IOClass=obd.get_port()
-while 1:
-    print "sensor 12"
-    print IOClass.sensor(12)
-    print "sensor 13"
-    print IOClass.sensor(13)
-    print obd.get_output()
-    print obd.get_sensors()
-    print "sensor of total results from caputure"
-   # print obd.allSensorData
-
-    try:
-        print "DTC"
-        print IOClass.get_dtc()
-    except:
-        print "print DTC error"
-        time.sleep(0.5)
-
-
-if obd.is_connected():
-    print "got following sensors: "
-
-    print obd.get_sensors()
-    print obd.get_output()
-   # IOClass=obd.get_port()
-   # print IOClass.sensor("rpm")
-   # print IOClass.sensor("speed")
-
-else:
-	print "not connected"
-	print obd.is_connected()
-
-#while 1:
-    #typeInMode()
-
-
-#vcTemp()
+print obd.speed
