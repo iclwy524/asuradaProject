@@ -18,7 +18,7 @@ OBD_THROTTLEPOS_INDEX=17
 class OBDController():
     def __init__(self):
         self.port = None
-        self.sensorlist = []
+
         #localtime = time.localtime(time.time())
         #filename = path+"car-"+str(localtime[0])+"-"+str(localtime[1])+"-"+str(localtime[2])+"-"+str(localtime[3])+"-"+str(localtime[4])+"-"+str(localtime[5])+".log"
         #self.log_file = open(filename, "w", 128)
@@ -63,19 +63,29 @@ class OBDController():
         print "Logging started"
 
         while 1:
-            localtime = datetime.now()
-            current_time = str(localtime.hour)+":"+str(localtime.minute)+":"+str(localtime.second)+"."+str(localtime.microsecond)
-            log_string = current_time
             results = {}
-            for index in self.sensorlist:
-                (name, value, unit) = self.port.sensor(index)
-                log_string = log_string + ","+str(value)
-                results[obd_sensors.SENSORS[index].shortname] = value;
+            (name, value, unit) = self.port.sensor(OBD_RPM_INDEX)
+            print name +":"+value+ " "+unit
+            results["rpm"] = value;
 
-            gear = self.calculate_gear(results["rpm"], results["speed"])
-            log_string = log_string #+ "," + str(gear)
+            (name, value, unit) = self.port.sensor(OBD_SPEED_INDEX)
+            print name +":"+value+ " "+unit
+            results["speed"] = value;
+
+            (name, value, unit) = self.port.sensor(OBD_THROTTLEPOS_INDEX)
+            print name +":"+value+ " "+unit
+            results["throttle_pos"] = value;
+
+            self.speed=results["speed"]
+            self.rpm=results["rpm"]
+            self.throttle_pos=results["throttle_pos"]
+
+            self.gear = self.calculate_gear(results["rpm"], results["speed"])
+
+
+
             #self.log_file.write(log_string+"\n")
-            print log_string
+
 
     def calculate_gear(self, rpm, speed):
         if speed == "" or speed == 0:
@@ -112,8 +122,8 @@ class OBDController():
 if __name__== "__main__":
     #username = getpass.getuser()
     #logitems = ["rpm", "speed", "throttle_pos", "load", "fuel_status"]
-    #o = OBD_Recorder('/home/'+username+'/pyobd-pi/log/', logitems)
-    #o.connect()
+    o = OBDCONTROLLER()
+    o.connect()
 
     if not o.is_connected():
         print "Not connected"
