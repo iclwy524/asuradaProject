@@ -124,10 +124,11 @@ if __name__== "__main__":
     #logitems = ["rpm", "speed", "throttle_pos", "load", "fuel_status"]
     o = OBDController()
     o.connect()
-    while not o.is_connected()
+    while True
         print "conneting..."
         time.sleep(2)
+        if o.is_connected():
+            break
 
-    if not o.is_connected():
-        print "Not connected"
+    print "Connected, getting data"
     o.record_data()
