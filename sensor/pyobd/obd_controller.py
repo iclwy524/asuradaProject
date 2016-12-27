@@ -122,7 +122,7 @@ class OBDController():
 if __name__== "__main__":
     #username = getpass.getuser()
     #logitems = ["rpm", "speed", "throttle_pos", "load", "fuel_status"]
-    o = OBDCONTROLLER()
+    o = OBDController()
     o.connect()
 
     if not o.is_connected():
